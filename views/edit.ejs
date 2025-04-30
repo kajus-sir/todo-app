@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+</head>
+<body>
+    
+    <form action="/tasks/<%= task.id %>" method="POST">
+        <input type="text" name="title" value="<%= task.title %>" required />
+
+        <label>
+        Completed:
+        <input type="checkbox" name="completed" <%= task.completed ? 'checked' : '' %> />
+        </label>
+
+        <button type="submit">Save</button>   
+    </form>
+
+    <form action="/tasks/<%= task.id %>/delete" method="POST">
+        <button type="submit" style="color: red;">Delete Task</button>
+    </form>
+
+  <a href="/">Back</a>
+    
+</body>
+</html>
