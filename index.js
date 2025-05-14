@@ -1,39 +1,52 @@
 const express = require('express');
+const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const app = express();
+const port = 3000;
+const db = new sqlite3.Database('./todo.db');
+
+// View engine setup
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-const port = 3000;
-
-app.use(express.json())
+// Middleware
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-const db = new sqlite3.Database('./todo.db');
+// Skapa tasks-tabellen om den inte finns
+db.run(`
+  CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY,
+    title TEXT,
+    completed BOOLEAN
+  )
+`);
 
-db.run('CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY, title TEXT, completed BOOLEAN)');
+// Routes
 
+// Visa alla tasks
 app.get('/', (req, res) => {
   db.all('SELECT * FROM tasks', (err, rows) => {
     res.render('index', { tasks: rows });
   });
 });
 
-// Lägga in tasks i databas
+// Lägg till ny task
 app.post('/tasks', (req, res) => {
   const title = req.body.title;
   db.run('INSERT INTO tasks (title, completed) VALUES (?, ?)', [title, 0]);
   res.redirect('/');
 });
 
-// Route till att få alla tasks
+// Hämta alla tasks som JSON
 app.get('/tasks', (req, res) => {
   db.all('SELECT * FROM tasks', (err, rows) => {
     res.json(rows);
   });
 });
 
-// Visa edit formuläret
+// Visa edit-formulär för en task
 app.get('/tasks/:id', (req, res) => {
   const id = req.params.id;
   db.get('SELECT * FROM tasks WHERE id = ?', [id], (err, task) => {
@@ -41,7 +54,7 @@ app.get('/tasks/:id', (req, res) => {
   });
 });
 
-// Updatera tasksen
+// Uppdatera en task
 app.post('/tasks/:id', (req, res) => {
   const id = req.params.id;
   const title = req.body.title;
@@ -51,21 +64,14 @@ app.post('/tasks/:id', (req, res) => {
   res.redirect('/');
 });
 
-// Ta bort Task
+// Ta bort en task
 app.post('/tasks/:id/delete', (req, res) => {
   const id = req.params.id;
   db.run('DELETE FROM tasks WHERE id = ?', [id]);
   res.redirect('/');
 });
 
-
-
-
-
-
-
-
-// Start the server - node index.js
+// Starta servern
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
