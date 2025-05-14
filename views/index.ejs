@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-index.css">
   
 </head>
 <body>
@@ -16,13 +16,16 @@
     </form>
     
     <ul>
-          <% tasks.forEach(function(task) { %>
-            <li>
-              <a href="/tasks/<%= task.id %>"><%= task.title %></a>
-              <% if (task.completed) { %>✅<% } else { %>❌<% } %>
-            </li>
-          <% }) %>
-    </ul>
+      <% tasks.forEach(function(task) { %>
+          <li>
+              <a href="/tasks/<%= task.id %>">
+                  <span><%= task.title %></span>
+                  <% if (task.completed) { %>✅<% } else { %>❌<% } %>
+              </a>
+          </li>
+      <% }) %>
+  </ul>
+  
     <script src="//js/script.js"></script>
 </body>
 </html>
