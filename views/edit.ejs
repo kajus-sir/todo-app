@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Edit Task</title>
-    <link rel="stylesheet" href="/css/style-edit.css">
+    <link rel="stylesheet" href="/css/style-edit.css" />
 </head>
 <body>
-    
-    <form action="/tasks/<%= task.id %>" method="POST">
-        <input type="text" name="title" value="<%= task.title %>" required />
+    <h1>Edit Task</h1>
 
-        <label>
-        Completed:
-        <input type="checkbox" name="completed" <%= task.completed ? 'checked' : '' %> />
+    <form action="/tasks/<%= task.id %>" method="POST" id="edit-task-form">
+        <label for="title">Title</label>
+        <input id="title" type="text" name="title" value="<%= task.title %>" required />
+
+        <label for="completed" class="checkbox-label">
+            <input id="completed" type="checkbox" name="completed" <%= task.completed ? 'checked' : '' %> />
+            Completed
         </label>
 
-        <button type="submit">Save</button>   
+        <label for="notes">Notes</label>
+        <textarea id="notes" name="notes" rows="5"><%= task.notes || '' %></textarea>
+
+        <button type="submit" class="save-btn">Save</button>
     </form>
 
-    <form action="/tasks/<%= task.id %>/delete" method="POST">
+    <form action="/tasks/<%= task.id %>/delete" method="POST" id="delete-task-form">
         <button class="delete-btn" type="submit">Delete Task</button>
     </form>
 
-  <a href="/">Back</a>
-    
+    <a href="/" class="back-link">Back</a>
 </body>
 </html>

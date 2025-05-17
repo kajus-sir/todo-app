@@ -18,6 +18,11 @@ Edit an Existing Task
 Remove a Task
     DELETE FROM tasks WHERE id = 4;
 
+Ändringar till Repo
+    git status
+    git add .
+    git commit -m "Din commit-meddelande här"
+    git push origin main
 
 
 

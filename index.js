@@ -19,9 +19,12 @@ db.run(`
   CREATE TABLE IF NOT EXISTS tasks (
     id INTEGER PRIMARY KEY,
     title TEXT,
-    completed BOOLEAN
+    completed BOOLEAN,
+    notes TEXT
   )
 `);
+
+
 
 // Routes
 
@@ -59,8 +62,9 @@ app.post('/tasks/:id', (req, res) => {
   const id = req.params.id;
   const title = req.body.title;
   const completed = req.body.completed ? 1 : 0;
+  const notes = req.body.notes;
 
-  db.run('UPDATE tasks SET title = ?, completed = ? WHERE id = ?', [title, completed, id]);
+  db.run('UPDATE tasks SET title = ?, completed = ?, notes = ? WHERE id = ?', [title, completed, notes, id]);
   res.redirect('/');
 });
 
@@ -72,6 +76,7 @@ app.post('/tasks/:id/delete', (req, res) => {
 });
 
 // Starta servern
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server running at http://0.0.0.0:${port}`);
 });
+
