@@ -34,10 +34,14 @@ npm install
 
 ### 4. Start the server
 node index.js
-
-### 5. Open in your browser
-http://0.0.0.0:3000 --- (0.0.0.0) your IPv4
 ```
+### 5. Open in your browser
+
+Go to: http://localhost:3000
+
+Or, if you want to open it from another device on the same network (like your phone), use your IPv4 address instead:
+Example: http://192.168.1.5:3000
+
 ---
 
 ## 🛠️ Built With
@@ -80,7 +84,7 @@ Remove a Task
 Add Changes to Repo
     git status
     git add .
-    git commit -m "Din commit-meddelande här"
+    git commit -m "Your commit-message here"
     git push origin main
 
 
