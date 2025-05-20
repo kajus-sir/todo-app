@@ -22,25 +22,31 @@ A clean and modern To-Do List web application built with Node.js, Express, and S
 ---
 
 ## 🚀 Getting Started
-```bash
+
 ### 1. Clone the repository
+```bash
 git clone https://github.com/kajus-sir/todo-app
-
+```
 ### 2. Navigate into the project folder
+```bash
 cd todo-app
-
+```
 ### 3. Install dependencies
+```bash
 npm install
-
+```
 ### 4. Start the server
+```bash
 node index.js
 ```
 ### 5. Open in your browser
 
-Go to: http://localhost:3000
+Local Access:
+Navigate to http://localhost:3000 in your web browser.
 
-Or, if you want to open it from another device on the same network (like your phone), use your IPv4 address instead:
-Example: http://192.168.1.5:3000
+Access from Another Device (e.g., Phone):
+Replace localhost with your device's IPv4 address. For example:
+http://192.168.1.100:3000
 
 ---
 
