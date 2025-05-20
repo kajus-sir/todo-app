@@ -14,7 +14,7 @@ A clean and modern To-Do List web application built with Node.js, Express, and S
 
 ---
 
-## 📸 Screenshot
+## 📸 Screenshots
 
 ![Screenshot](./public/images/main-page.png)
 ![Screenshot](./public/images/edit-page.png)
