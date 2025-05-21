@@ -10,3 +10,7 @@ node_modules/
 # Ignore OS-specific files (e.g., macOS, Windows)
 .DS_Store
 Thumbs.db
+
+# Ignore personal Database
+todo.db
+

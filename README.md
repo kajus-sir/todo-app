@@ -69,6 +69,6 @@ http://192.168.1.100:3000
 
 ## 🗝️ License
 
-This project is licensed under the [MIT License](./LICENCE).
+This project is licensed under the [MIT License](./LICENSE).
 
 ---
