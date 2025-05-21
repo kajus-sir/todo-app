@@ -67,31 +67,8 @@ http://192.168.1.100:3000
 
 ---
 
-## Other / Self-notes
+## 🗝️ License
 
-Start server - node index.js
+This project is licensed under the [MIT License](./LICENCE).
 
-Open Database in Sqlite3
- - sqlite3 todo.db
- - PRAGMA table_info(tasks);
-
-Check Your Changes
-    SELECT * FROM lists; - Shows list
- 
-Add a New Task
-    INSERT INTO tasks (task_name, status) VALUES ('Buy groceries', 0);
-
-Edit an Existing Task
-    UPDATE tasks SET completed = 1 WHERE title = 'Do homework';
-
-Remove a Task
-    DELETE FROM tasks WHERE id = 4;
-
-Add Changes to Repo
-    git status
-    git add .
-    git commit -m "Your commit-message here"
-    git push origin main
-
-
-
+---
